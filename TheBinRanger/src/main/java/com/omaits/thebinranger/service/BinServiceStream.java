@@ -35,6 +35,7 @@ public class BinServiceStream implements CardTypeCache {
         for(int i = 0; i< binRanges.size(); i++) {
             if (!StringUtility.isNumeric(binRanges.get(i).start) || !StringUtility.isNumeric(binRanges.get(i).end)) {
                 Logger.log(LogLevel.ERROR, String.format("The following bin range is invalid and will be skipped. The start and/or end are not numeric: % - %", binRanges.get(i).start, binRanges.get(i).end));
+                continue;
             }
 
             //validate bin Range
@@ -50,6 +51,7 @@ public class BinServiceStream implements CardTypeCache {
             {
                 //an invalid range was provided. Start and end of the range should be 8 digits
                 Logger.log(LogLevel.ERROR, String.format("The following bin range is invalid and will be skipped. The start and/or end are not 8 digits: % - %", binRanges.get(i).start, binRanges.get(i).end));
+                continue;
             }
         }
 
